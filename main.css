@@ -1,0 +1,57 @@
+.display{
+    width: 100%;
+    background-color: darkGrey;
+    height: 100px;
+    font-size: 48px;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.container{
+    background: lightGrey;
+    width: max-content;
+    margin: auto;
+}
+
+
+.buttons{
+    max-width: 400px;
+    display:flex;
+    flex-wrap: wrap;
+   
+}
+.buttons, button:hover
+{
+background-color:rgba(248, 6, 119, 0.5);
+border-radius: 5px;
+border:3px solid rgb(34, 34, 37)
+
+}
+
+button{
+    flex: 1 25%;
+}
+
+button{
+    flex: 1 25%;
+    padding: 15px;
+    font-size: 28px;
+  } 
+  
+  .btn-number {
+    background-color:grey;
+  }
+  
+  .btn-operator {
+    background-color:orange;
+  }
+  
+  .btn-equals {
+    background-color:green;
+  }
+  
+  .btn-clear {
+     background-color:crimson;
+  }
+  

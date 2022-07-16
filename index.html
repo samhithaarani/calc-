@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Caluclator</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='main.css'>
+
+    <script src='main.js'></script>
+</head>
+<body>
+    <center><h1>Caluclator</h1></center>
+    <div class="container">
+        <div class="display"></div>
+        <div class="buttons">
+          <button class="btn-number" data-num="1">1</button>
+          <button class="btn-number" data-num="2">2</button>
+          <button class="btn-number" data-num="3">3</button>
+          <button class="btn-operator" data-num="+">+</button>
+          <button class="btn-number" data-num="4">4</button>
+          <button class="btn-number" data-num="5">5</button>
+          <button class="btn-number" data-num="6">6</button>
+          <button class="btn-operator" data-num="-">-</button>
+          <button class="btn-number" data-num="7">7</button>
+          <button class="btn-number" data-num="8">8</button>
+          <button class="btn-number" data-num="9">9</button>
+          <button class="btn-operator" data-num="*">X</button>
+          <button class="btn-clear">C</button>
+          <button class="btn-number" data-num="0">0</button>
+          <button class="btn-equals" data-num="=">=</button>
+          <button class="btn-operator" data-num="/">/</button>
+        </div>
+      </div>
+<script>
+const buttons = document.querySelectorAll('.btn-number, .btn-operator')
+const display = document.querySelector('.display')
+const wordchange = document.querySelector('.mywords')
+const equalsButton = document.querySelector('.btn-equals')
+const clearButton = document.querySelector('.btn-clear')
+
+let displayData=" ";
+//add an eventListener to each of the buttons
+buttons.forEach(button => {
+  button.addEventListener('click', () => { 
+      // logic that run when the button is "clicked"
+      const buttonValue = button.getAttribute('data-num');  
+      displayData += buttonValue;
+      display.textContent = displayData;
+  })
+})
+equalsButton.addEventListener('click', () => { 
+
+    // use the eval() function to evaluate the expression and output it to the display
+    if(eval(displayData))
+    {
+      displayData=eval(displayData)
+      display.textContent = number2words(displayData)+"("+displayData+")";
+    }
+    else
+    {
+        display.style.borderColor = "red";
+    }
+     
+    
+    //alert(number2words(displayData) + " " +typeof(number2words(displayData)))
+    
+    
+    //alert(displayData+" "+typeof(displayData))
+})
+
+clearButton.addEventListener('click', () => { 
+    displayData = "";
+    display.textContent = displayData;
+  })
+
+  var num = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split(" ");
+  var tens = "twenty thirty forty fifty sixty seventy eighty ninety".split(" ");
+  
+  function number2words(n){
+      if (n < 20) return num[n];
+      var digit = n%10;
+      if (n < 100) return tens[~~(n/10)-2] + (digit? "-" + num[digit]: "");
+      if (n < 1000) return num[~~(n/100)] +" hundred" + (n%100 == 0? "": " and " + number2words(n%100));
+      alert(number2words(~~(n/1000)) + " thousand" + (n%1000 != 0? " " +number2words(n%1000): ""));
+  }
+
+
+      </script>
+</body>
+</html>
